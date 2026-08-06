@@ -1,0 +1,17 @@
+{
+  "default": true,
+
+  // 允许长代码行（很多代码示例需要）
+  "MD013": false,
+
+  // 允许HTML标签
+  "MD033": false,
+
+  // 允许文档第一行不是标题
+  "MD041": false,
+
+  // 允许重复标题
+  "MD024": {
+    "siblings_only": true
+  }
+}
