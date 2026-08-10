@@ -81,10 +81,13 @@ description: '生成、审阅、修复或解释 Mermaid 图，并在 flowchart�
 ## 验证闭环
 
 1. 确认最终承载 Mermaid 的目标环境，而不只检查代码文本。
-2. 优先使用 Maid 对 Mermaid 代码和 Markdown 中的 Mermaid 代码块做快速预检：
-   默认通过 `npx maid <文件或目录>` 临时调用；全局安装后使用
-   `mmd-maid <文件或目录>`。仅将 Maid 原生支持的图类型视为有效结果；
-   pass-through 类型仍需目标渲染器验证。
+2. 优先使用环境或项目已有的 Maid 对 Mermaid 代码和 Markdown 中的
+   Mermaid 代码块做快速预检：环境已有 `maid` 时直接执行
+   `maid <文件或目录>`；项目已声明 `@probelabs/maid` 依赖时执行
+   `npx maid <文件或目录>`。只有用户已允许下载并执行第三方包时，
+   才使用 `npx -y @probelabs/maid <文件或目录>`；不要为了验证静默安装依赖。
+   仅将 Maid 原生支持的图类型视为有效结果；pass-through 类型仍需
+   目标渲染器验证。
 3. 使用目标环境实际渲染每张新增或修改的图；环境中已有 `mmdc` 时，可用
    Mermaid CLI 补充验证。
 4. 同一文档面向多个渲染器时，至少验证所有必须支持的渲染器。

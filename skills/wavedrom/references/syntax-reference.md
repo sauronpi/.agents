@@ -163,11 +163,21 @@ WaveDrom CLI 接受 JSON5。具体 Markdown 插件可能只接受严格 JSON，�
 
 ### CLI
 
-环境已安装 WaveDrom CLI 时，将 JSON5 源文件渲染为 SVG：
+环境或项目已有对应 CLI 时，将 JSON5 源文件渲染为 SVG。`wavedrom`
+将 SVG 写到标准输出，`wavedrom-cli` 通过 `-s` 指定输出文件：
 
 ```sh
 wavedrom --input source.json5 > output.svg
+wavedrom-cli -i source.json5 -s output.svg
 ```
+
+环境未安装 `wavedrom-cli`、但用户已允许下载并执行 npm 包时，可以临时调用：
+
+```sh
+npx wavedrom-cli -i source.json5 -s output.svg
+```
+
+`npx` 在本地缺少对应包时可能触发下载；未经允许时不要用它静默获取或执行依赖。
 
 ### HTML
 
@@ -203,3 +213,4 @@ wavedrom --input source.json5 > output.svg
 
 - [WaveDrom Tutorial](https://wavedrom.com/tutorial.html)
 - [WaveDrom 官方仓库 README](https://github.com/wavedrom/wavedrom)
+- [WaveDrom CLI](https://github.com/wavedrom/cli)

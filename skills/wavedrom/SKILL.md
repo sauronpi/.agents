@@ -83,11 +83,21 @@ description: '生成、修复和审阅 WaveDrom/WaveJSON 数字时序图。适�
 
 ### CLI 或发布产物
 
-将源代码保存为 JSON5；环境已有 WaveDrom CLI 时，用它渲染 SVG。不要仅为一次验证静默安装依赖。
+将源代码保存为 JSON5，并优先使用环境或项目已有的 CLI 渲染 SVG。
+`wavedrom` 和 `wavedrom-cli` 是两个可用的 npm 命令入口，输出参数不同：
 
 ```sh
 wavedrom --input source.json5 > output.svg
+wavedrom-cli -i source.json5 -s output.svg
 ```
+
+环境未安装 `wavedrom-cli`、但用户已允许下载并执行 npm 包时，可以直接运行：
+
+```sh
+npx wavedrom-cli -i source.json5 -s output.svg
+```
+
+`npx` 在本地缺少对应包时可能触发下载；不要为了验证静默安装或执行未经允许的依赖。
 
 完整 HTML 集成方式和更多语法见 [常用语法参考](references/syntax-reference.md)。
 
@@ -131,3 +141,4 @@ wavedrom --input source.json5 > output.svg
 
 - [WaveDrom Tutorial](https://wavedrom.com/tutorial.html)
 - [WaveDrom 官方仓库 README](https://github.com/wavedrom/wavedrom)
+- [WaveDrom CLI](https://github.com/wavedrom/cli)
