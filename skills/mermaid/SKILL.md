@@ -81,10 +81,14 @@ description: '生成、审阅、修复或解释 Mermaid 图，并在 flowchart�
 ## 验证闭环
 
 1. 确认最终承载 Mermaid 的目标环境，而不只检查代码文本。
-2. 使用目标环境实际渲染每张新增或修改的图；环境中已有 `mmdc` 时，可用
+2. 优先使用 Maid 对 Mermaid 代码和 Markdown 中的 Mermaid 代码块做快速预检：
+   默认通过 `npx maid <文件或目录>` 临时调用；全局安装后使用
+   `mmd-maid <文件或目录>`。仅将 Maid 原生支持的图类型视为有效结果；
+   pass-through 类型仍需目标渲染器验证。
+3. 使用目标环境实际渲染每张新增或修改的图；环境中已有 `mmdc` 时，可用
    Mermaid CLI 补充验证。
-3. 同一文档面向多个渲染器时，至少验证所有必须支持的渲染器。
-4. 无法实际渲染时，明确标注未验证项，并移除非必要的新语法和增强配置。
+4. 同一文档面向多个渲染器时，至少验证所有必须支持的渲染器。
+5. 无法实际渲染时，明确标注未验证项，并移除非必要的新语法和增强配置。
 
 ## 输出质量门
 
@@ -183,3 +187,4 @@ gantt
 - [State Diagram](https://mermaid.js.org/syntax/stateDiagram.html)
 - [Entity Relationship Diagram](https://mermaid.js.org/syntax/entityRelationshipDiagram.html)
 - [Gantt](https://mermaid.js.org/syntax/gantt.html)
+- [Maid](https://github.com/probelabs/maid)

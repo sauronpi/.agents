@@ -18,6 +18,9 @@
 ├── .markdownlint.jsonc
 ├── AGENTS.md
 ├── README.md
+├── rules/
+│   ├── adversarial-review.md
+│   └── first-principles.md
 └── skills/
     ├── markdown/
     │   └── SKILL.md
@@ -36,6 +39,7 @@
 ## Rules 与 Skills
 
 - 仓库根目录的 `AGENTS.md` 定义维护本仓库时应遵循的规则，也是设计共享规则和 Skills 的依据。
+- `rules/` 保存可跨项目复用的用户级 Rule 源文件。这些文件不会被 Agent 自动发现；用户应根据实际需要，将选定内容接入不同 Agent 或项目的规则入口。
 - `skills/` 提供可复用的任务能力。每个 Skill 使用独立目录，并以 `SKILL.md` 作为入口。
 
 根目录的 `AGENTS.md` 包含本仓库专属约束，不应直接作为其他项目的全局规则。新增内容前应先判断作用域：跨多个项目长期有效的能力才适合放入本仓库；单个项目的约束应留在该项目中。完整的设计原则和修改要求见 [`AGENTS.md`](AGENTS.md)。
