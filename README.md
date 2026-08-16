@@ -20,9 +20,14 @@
 ├── README.md
 ├── rules/
 │   ├── adversarial-review.md
+│   ├── c-code-style.md
 │   ├── code-review.md
 │   └── first-principles.md
 └── skills/
+    ├── c-code-style/
+    │   ├── SKILL.md
+    │   └── references/
+    │       └── style-guide.md
     ├── markdown/
     │   └── SKILL.md
     ├── mermaid/
@@ -116,7 +121,36 @@ find "$HOME/.agents/skills" -type f -name SKILL.md
 
 项目专属 Skill 应直接在目标项目中维护，不应加入本仓库。
 
-### 4. 验证项目级接入
+### 4. 接入通用 C 代码风格
+
+普通 C、嵌入式 C 或 C/C++ 混合编译项目应在项目级规则入口中加入以下指令，并将项目
+配置替换为实际值：
+
+```text
+处理人工维护的 .c 或 .h 文件前，必须读取并遵循：
+- $HOME/.agents/rules/c-code-style.md
+- $HOME/.agents/skills/c-code-style/SKILL.md
+
+项目配置：
+- C standard: C99
+- C++ standard: C++11
+- Public symbol prefix: <module_>
+- Constant symbol prefix: <MODULE_>
+- C compiler: <command>
+- C++ compiler: <command>
+- Formatter/lint/build/test: <commands>
+- Shared C/C++ headers: <paths or all public headers>
+- Project exceptions: <exceptions or none>
+```
+
+`C99` 和 `C++11` 是项目没有更明确约束时的默认检查标准。公共符号前缀未声明时可以从
+现有 API 推断，但无法可靠推断且需要新增公共符号时，必须先询问用户。没有公共 API 的
+项目可以明确声明无需公共前缀。
+
+共享头文件使用条件化的 `extern "C"` 支持同一项目内的 C/C++ 混合编译。这不表示项目
+承诺数据布局、跨编译器兼容、动态库版本兼容、其他语言 FFI 或绑定生成。
+
+### 5. 验证项目级接入
 
 在目标项目中启动新会话并检查：
 
