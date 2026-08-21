@@ -20,16 +20,16 @@ C/C++ 共享头文件。第三方代码、生成代码、独立 C++ 或其他语
 
 ### 标识符形式
 
-| 对象 | 形式 | 示例 |
-| --- | --- | --- |
-| 函数 | `snake_case` | `acme_device_create` |
-| 变量、参数和字段 | `snake_case` | `sample_count` |
-| struct、union、enum 标签 | `snake_case` | `struct acme_device` |
-| typedef 类型 | `snake_case_type` | `acme_device_type` |
-| 回调 typedef | `snake_case_callback_type` | `acme_event_callback_type` |
-| 枚举值 | `UPPER_SNAKE_CASE` | `ACME_DEVICE_STATE_READY` |
-| 常量和对象式宏 | `UPPER_SNAKE_CASE` | `ACME_DEVICE_LIMIT` |
-| 函数式宏 | `UPPER_SNAKE_CASE` | `ACME_ARRAY_COUNT(value)` |
+| 对象                     | 形式                       | 示例                       |
+| ------------------------ | -------------------------- | -------------------------- |
+| 函数                     | `snake_case`               | `acme_device_create`       |
+| 变量、参数和字段         | `snake_case`               | `sample_count`             |
+| struct、union、enum 标签 | `snake_case`               | `struct acme_device`       |
+| typedef 类型             | `snake_case_type`          | `acme_device_type`         |
+| 回调 typedef             | `snake_case_callback_type` | `acme_event_callback_type` |
+| 枚举值                   | `UPPER_SNAKE_CASE`         | `ACME_DEVICE_STATE_READY`  |
+| 常量和对象式宏           | `UPPER_SNAKE_CASE`         | `ACME_DEVICE_LIMIT`        |
+| 函数式宏                 | `UPPER_SNAKE_CASE`         | `ACME_ARRAY_COUNT(value)`  |
 
 typedef 名 MUST 使用 `_type` 后缀，不使用 `_t`。公开 struct、union、enum 标签和 typedef
 SHOULD 使用项目或模块前缀。不要仅为添加 `_type` 而给可直接使用标签的既有项目批量新增
@@ -54,13 +54,30 @@ acme_device_type *acme_device_create(void);
 
 ### 语义命名
 
-- 执行动作的函数使用能描述行为的动词。
+- 函数 MUST 使用语义化名称。名称应使用领域或模块中的准确词汇表达职责，使读者仅结合
+  函数声明即可理解其主要目的。
+- 执行动作的函数 MUST 使用能描述可观察行为的动词，不得以内部算法、数据结构或实现步骤
+  代替接口语义。避免 `process`、`handle`、`do`、`manage` 等不能独立说明职责的宽泛词；
+  领域术语或既有惯用名称除外。
+- 名称 MUST 包含消除歧义所需的信息，并 SHOULD 省略不能增加调用处语义的冗余词。不得
+  强制套用固定的单词组合或命名模板。
 - `create` 表示建立新对象或资源，`destroy` 表示终止其生命周期；没有对应生命周期语义
   时不得使用这些词。
 - `get` 和 `set` 只用于读取和设置同一概念；有副作用或昂贵计算时名称 SHOULD 明确表达。
 - 布尔变量和查询函数 SHOULD 使用 `is_`、`has_`、`can_`、`should_` 等前缀，使真假含义
   无需依赖注释。
 - 同一类集合操作 MUST 对 `add`、`remove`、`replace`、`find` 等动词保持一致语义。
+- `from`、`to`、`in`、`at`、`by`、`with` 等关系词 SHOULD 在能够明确来源、目标、位置、
+  依据或附加条件时使用；不得仅为保持形式一致而添加。关系词常见用法示例：
+  - `from` 表示数据或资源来源：`acme_decode_from_stream`、`acme_copy_from_buffer`；
+  - `to` 表示转换或移动的目标：`acme_convert_to_utf8`、`acme_write_to_file`；
+  - `in` 表示值或操作的容器或域：`acme_find_in_table`、`acme_search_in_tree`；
+  - `at` 表示位置或索引：`acme_remove_at_index`、`acme_insert_at_position`；
+  - `by` 表示操作方式或倍数：`acme_scale_by_factor`、`acme_sort_by_name`；
+  - `with` 表示配套条件或参数：`acme_create_with_allocator`、`acme_init_with_config`。
+- 具有外部链接的项目函数 MUST 使用项目约定的命名空间前缀。仅供当前翻译单元使用的
+  函数 MUST 声明为 `static`。
+- 标准接口、第三方 API、平台 ABI、回调签名以及框架规定的函数名称 MUST 按其契约保留。
 
 ## 源文件与头文件
 
@@ -71,7 +88,7 @@ acme_device_type *acme_device_create(void);
   优先。
 - 公共接口 SHOULD 说明输入、输出、错误、单位、生命周期和并发要求中实际适用的部分，
   不为不存在的约束增加模板化注释。
-- C 专属实现细节 SHOULD 留在 `.c` 文件；只被单个翻译单元使用的符号 MUST 尽可能声明
+- C 专属实现细节 SHOULD 留在 `.c` 文件；仅供当前翻译单元使用的函数和变量 MUST 声明
   为 `static`。
 
 ## C/C++ 共享头文件
