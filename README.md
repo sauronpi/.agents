@@ -22,6 +22,7 @@
 │   ├── adversarial-review.md
 │   ├── c-code-style.md
 │   ├── code-review.md
+│   ├── document-review.md
 │   └── first-principles.md
 └── skills/
     ├── c-code-style/
