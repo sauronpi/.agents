@@ -178,6 +178,26 @@ find "$HOME/.agents/skills" -type f -name SKILL.md
 - 避免硬编码具体用户目录
 - 避免依赖单一 Agent、语言、框架或项目结构
 
+## 工具安装
+
+`.agents` 仓库验证和部分 Skills 渲染使用的命令行工具基于 Node.js。先安装
+[Node.js](https://nodejs.org/)（含 `npm` 和 `npx`），再按需安装下列工具。
+
+`-g` 表示全局安装，便于在任意目录运行；也可不加 `-g` 在项目内局部安装并通过
+`npx` 调用。下列命令在 Windows、macOS 和 Linux 通用。
+
+| 工具 | 用途 | 必需性 | 安装命令 |
+| --- | --- | --- | --- |
+| `markdownlint-cli2` | `.agents` 仓库自身的 Markdown 验证 | 工具可用时必需 | `npm install -g markdownlint-cli2` |
+| `wavedrom-cli` | `wavedrom` Skill 渲染时序图为 SVG | 可选 | `npm install -g wavedrom-cli` |
+| `maid` | `mermaid` Skill 预检 Markdown 中的 Mermaid 代码块 | 可选 | `npm install -g @probelabs/maid` |
+| `mmdc` | `mermaid` Skill 将 Mermaid 渲染为 SVG/PNG（补充验证） | 可选 | `npm install -g @mermaid-js/mermaid-cli` |
+
+`mermaid` Skill 也可不经预装、按其 `SKILL.md` 通过 `npx` 临时调用上述工具；仅在用户
+允许下载并执行第三方 npm 包时使用。
+
+未安装可选工具时，对应 Skill 仍可用于编写和审阅，但无法在本地预检或渲染产物验证。
+
 ## 验证
 
 在仓库根目录运行：
