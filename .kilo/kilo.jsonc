@@ -1,0 +1,6 @@
+{
+  "$schema": "https://app.kilo.ai/config.json",
+  "commit_message": {
+    "prompt": "Format all commit messages using conventional commits: type(scope): description. Use types: feat, fix, docs, style, refactor, test, chore, perf, ci, build.\n"
+  }
+}
