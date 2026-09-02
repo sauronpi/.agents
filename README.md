@@ -21,6 +21,7 @@
 ├── rules/
 │   ├── adversarial-review.md
 │   ├── c-code-style.md
+│   ├── code-implementation.md
 │   ├── code-review.md
 │   ├── document-review.md
 │   └── first-principles.md
