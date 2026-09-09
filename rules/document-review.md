@@ -28,8 +28,7 @@ Blocking 是不修复就足以阻止文档完成既定用途或被可靠使用�
 - **Evidence**：支持判断的需求、上下文、项目事实、契约、可靠来源或验证；
 - **Minimal Fix**：恢复正确性所需的最小修复。
 
-`Minimal Fix` 不是 Blocking 成立的证据；证据不足时，MUST 按下节定义区分 Non-blocking
-与 Remaining Uncertainty。
+`Minimal Fix` 不是 Blocking 成立的证据。
 
 ### Non-blocking 与不确定性
 
