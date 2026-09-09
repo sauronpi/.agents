@@ -8,8 +8,6 @@
 第三方代码、生成代码和项目明确排除的目录不适用本 Rule。独立的 C++、Objective-C
 及其他语言文件应遵循各自的项目规范，不得仅为与 C 代码统一而改成 snake_case。
 
-执行相关任务前，MUST 读取
-[`../skills/c-code-style/references/style-guide.md`](../skills/c-code-style/references/style-guide.md)。
 创建、修改、重构或审查 C 代码时，`c-code-style` Skill 可用则 MUST 使用其工作流。
 
 ## 项目配置
