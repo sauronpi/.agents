@@ -1,6 +1,6 @@
 ---
 name: c-code-style
-description: '创建、修改、重构或审查通用 C 与嵌入式 C 的 .c/.h 文件，并处理同一项目中的 C/C++ 共享头文件、extern "C"、snake_case 命名和项目格式验证。用于 C 代码实现、C API、驱动或 C 风格审查；不用于独立的 C++、Objective-C 或其他语言任务。'
+description: '创建、修改、重构或审查通用 C 与嵌入式 C 的 .c/.h 代码及代码风格，并按项目既有规则验证。适用于 C 实现、C API、驱动、命名约定和 C/C++ 共享头文件；不适用于独立 C++、Objective-C 或其他语言任务。'
 ---
 
 # C Code Style
@@ -16,7 +16,14 @@ description: '创建、修改、重构或审查通用 C 与嵌入式 C 的 .c/.h
 3. 查找 `.clang-format`、formatter 命令、C/C++ 标准、编译器、公共符号前缀和共享头文件
    清单。
 4. 读取目标文件及邻近 C 文件，确认项目已有风格和接口惯例。
-5. 每次执行都完整读取 [`references/style-guide.md`](references/style-guide.md)。
+5. 按任务读取直接相关的参考资料：
+   - 创建、修改或审查标识符时，读取 [`references/naming.md`](references/naming.md)；
+   - 处理 C/C++ 共享头文件或 `extern "C"` 时，读取
+     [`references/shared-headers.md`](references/shared-headers.md)；
+   - 处理嵌入式、寄存器、并发或可移植性问题时，读取
+     [`references/embedded-portability.md`](references/embedded-portability.md)；
+   - 创建、修改或审查源文件、头文件及排版时，读取
+     [`references/formatting.md`](references/formatting.md)。
 
 ### 2. 创建或修改代码
 
@@ -49,7 +56,7 @@ description: '创建、修改、重构或审查通用 C 与嵌入式 C 的 .c/.h
 
 ## Gotchas
 
-- typedef 使用 `_type`，不要使用 POSIX 保留的 `_t` 后缀。
+- 不为统一 typedef 后缀重命名既有类型或标准、平台、SDK、第三方 API 和 ABI 规定的名称。
 - `extern "C"` 只放在条件化的共享头文件声明周围，不写入 `.c` 实现。
 - 不因 C 使用 snake_case 而重命名同项目中的 C++ 符号。
 - 不用共享的 Allman 默认覆盖 `.clang-format`、邻近项目风格或 Linux 内核规范。
