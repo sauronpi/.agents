@@ -13,7 +13,7 @@
 - 改动直接影响的调用路径、状态、接口、协议、数据和行为；
 - 作出判断所必需的验证结果。
 
-审查深度 SHOULD 与风险相称。任务要求的重构也不得扩展到无关代码。
+审查深度 SHOULD 与风险相称。
 
 ## Finding 分级
 
@@ -31,48 +31,36 @@ Blocking 是不修复就足以阻止当前改动合并或交付的问题，例�
 - **Violated Constraint**：被违反的需求、契约、测试、协议或正确性约束。
 - **Minimal Fix**：恢复被违反约束所需的最小修复建议。
 
-前四项任一证据不足时，MUST 降级为 Non-blocking 或 Remaining Uncertainty；`Minimal Fix`
-仅是修复建议。最佳实践以及“可能”“理论上”“最好”“建议”“更加健壮”“未来可能”等
-表述不能单独作为证据。
+前四项任一证据不足时，MUST NOT 判为 Blocking，并按下节定义区分 Non-blocking 与
+Remaining Uncertainty。`Minimal Fix` 不是 Blocking 成立的证据。最佳实践或推测性表述
+不能单独作为 Blocking 的证据。
 
 ### Non-blocking 与不确定性
 
-已确认存在但不阻止当前任务正确完成的问题属于 Non-blocking，包括风格、命名、可读性
-优化、可选重构、微小性能改进、未来扩展，以及需求之外且不影响当前正确性的防御性或
-扩展性设计。尚未确认的事实、可达性或影响属于 Remaining Uncertainty。
+已确认存在但不阻止当前任务正确完成的问题属于 Non-blocking，例如风格与可读性问题、
+可选重构、微小性能改进，以及可选的防御性或扩展性设计。
+尚未确认的事实、可达性或影响属于 Remaining Uncertainty。
 
-无法确认的问题 SHOULD 先通过现有代码、路径、契约和验证确认；仍无法证明 Blocking 时，
-不得假设最坏情况。缺少验证只有在违反验收条件或使必要正确性结论无法成立时，才阻止
-交付。
+无法确认的问题 SHOULD 先通过现有代码、路径、契约和验证确认，不得假设最坏情况。
 
 不得为了让审查看起来完整而制造 Finding。
 
 ## 修复与复审
 
 Review MUST 先完成 Finding 判断。用户只要求审查时 MUST NOT 修改代码；任务包含修复时，
-只有 Blocking Finding 默认允许触发恢复被违反约束所需的最小修改。只有用户明确要求时
-才处理 Non-blocking Finding；否则 Non-blocking Finding 只记录，不得触发修改或继续审查。
-不得借审查扩大任务、API 或数据模型。
+只有 Blocking Finding 默认允许触发恢复被违反约束所需的最小修改。未经用户明确要求，
+Non-blocking Finding 仅可记录，MUST NOT 据此修改或继续审查。
+修复 MUST 保持原任务范围。
 
 修复 Blocking 后 MUST 仅复审原 Finding、修复直接引入的 Blocking、原始需求和必要验证。
 仍有 Blocking 时，若能在原范围内取得可验证进展，MUST 继续最小修复并定向复审；否则
-MUST 停止修改并输出 `Verdict: FAIL`。
+MUST 停止修改。
 
 ## 停止与输出
 
-完成必要验证后，存在未解决的 Blocking Finding 时 Verdict MUST 为 `FAIL`，否则 MUST 为
-`PASS`。Non-blocking Finding 和不足以否定必要正确性结论的 Remaining Uncertainty 不阻止
-PASS。输出 MUST 包含 Verdict；仅在有对应内容时输出 Findings、Verification 和 Remaining
-Uncertainty，且 Finding 仍须包含本规则要求的证据。完成输出后 MUST 结束审查。
-
-```text
-Verdict: PASS | FAIL
-[Blocking Findings:]
-- <finding>
-[Non-blocking Findings:]
-- <finding>
-[Verification:]
-- <performed check and result>
-[Remaining Uncertainty:]
-- <unverified fact and its effect>
-```
+存在未解决的 Blocking Finding，或缺少验证违反验收条件或使必要正确性结论无法成立时，
+Verdict MUST 为 `FAIL`；否则 MUST 为 `PASS`。验证受阻的原因及影响 MUST 记入
+Remaining Uncertainty，不得据此推定代码存在缺陷。
+输出 MUST 包含 Verdict；仅在有对应内容时输出 Blocking Findings、Non-blocking
+Findings、Verification 和 Remaining Uncertainty。
+完成输出后 MUST 结束审查。
