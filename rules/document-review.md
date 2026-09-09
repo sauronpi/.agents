@@ -28,16 +28,16 @@ Blocking 是不修复就足以阻止文档完成既定用途或被可靠使用�
 - **Evidence**：支持判断的需求、上下文、项目事实、契约、可靠来源或验证；
 - **Minimal Fix**：恢复正确性所需的最小修复。
 
-`Minimal Fix` 不是 Blocking 成立的证据；无法说明具体影响或提供充分依据时，Finding
-MUST 降级为 Non-blocking 或 Remaining Uncertainty。
+`Minimal Fix` 不是 Blocking 成立的证据；证据不足时，MUST 按下节定义区分 Non-blocking
+与 Remaining Uncertainty。
 
 ### Non-blocking 与不确定性
 
-不阻止文档完成既定用途的问题属于 Non-blocking，例如风格排版、可选补充和轻微重复。
+已确认但不阻止文档完成既定用途的问题属于 Non-blocking，例如风格排版、可选补充和轻微重复。
 不得为了让审查显得完整而制造 Finding。
 
-无法确认某项内容是否错误时，Reviewer MUST 标记不确定性并按需用现有上下文、来源或
-项目事实验证，不得假设其必然错误。只有不确定性本身足以使文档无法被可靠使用时才可
+事实或影响尚未确认时，Reviewer MUST 标记为 Remaining Uncertainty，并按需用现有上下文、
+来源或项目事实验证，不得假设其必然错误。只有不确定性本身足以使文档无法被可靠使用时才可
 成为 Blocking；否则记录其成立条件和影响。
 
 ## 审查重点
