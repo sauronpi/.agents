@@ -1,6 +1,6 @@
 # WaveDrom 常用语法参考
 
-需要查 WaveJSON token、`node/edge`、`period/phase`、图级配置或 HTML 集成时读取本文件。生成与审阅流程以主 `SKILL.md` 为准。
+需要查 WaveJSON token、`node/edge`、`period/phase`、图级配置或 HTML 集成时读取本文件。生成与审阅流程以主 `SKILL.md` 为准。排错时先在最小图中复现，再逐项恢复分组、箭头和配置。
 
 ## 顶层结构
 
@@ -45,7 +45,7 @@ WaveDrom CLI 接受 JSON5。具体 Markdown 插件可能只接受严格 JSON，�
 ### 电平与状态
 
 - `0`、`1`：确定的低、高电平。
-- `x`：未知或无关状态。
+- `x`：未定义或未知状态。
 - `z`：高阻状态。
 - `u`、`d`：上拉、下拉状态。
 - `=`、`2` 至 `9`：不同样式的数据区段，与 `data` 配合使用。
@@ -125,7 +125,6 @@ WaveDrom CLI 接受 JSON5。具体 Markdown 插件可能只接受严格 JSON，�
 
 - `period` 改变单个 lane 的水平周期比例。
 - `phase` 水平移动单个 lane；负值或小数值需要在目标版本验证可见范围。
-- 对齐检查应比较渲染后的边沿、区段和节点，而不是原始字符串长度。
 
 ## `config`、`head` 与 `foot`
 
@@ -163,18 +162,16 @@ WaveDrom CLI 接受 JSON5。具体 Markdown 插件可能只接受严格 JSON，�
 
 ### CLI
 
-环境或项目已有对应 CLI 时，将 JSON5 源文件渲染为 SVG。`wavedrom`
-将 SVG 写到标准输出，`wavedrom-cli` 通过 `-s` 指定输出文件：
+环境或项目已有 `wavedrom` 时，将 JSON5 源文件渲染为 SVG：
 
 ```sh
 wavedrom --input source.json5 > output.svg
-wavedrom-cli -i source.json5 -s output.svg
 ```
 
-环境未安装 `wavedrom-cli`、但用户已允许下载并执行 npm 包时，可以临时调用：
+环境未安装、但用户已允许下载并执行 npm 包时，可以临时调用：
 
 ```sh
-npx wavedrom-cli -i source.json5 -s output.svg
+npx wavedrom --input source.json5 > output.svg
 ```
 
 `npx` 在本地缺少对应包时可能触发下载；未经允许时不要用它静默获取或执行依赖。
@@ -200,17 +197,7 @@ npx wavedrom-cli -i source.json5 -s output.svg
 </html>
 ```
 
-## 查错顺序
-
-1. 检查 JSON 或 JSON5 是否符合目标入口支持的格式。
-2. 检查 `wave` 是否含非法 token。
-3. 检查数据区段与 `data` 标签是否按预期对应。
-4. 检查 `node` 位置、节点名与 `edge` 引用。
-5. 检查 `period`、`phase`、间隔和刻度造成的时间偏移。
-6. 在最小图中复现后，再逐项恢复分组、箭头和配置。
-
 ## 参考来源
 
 - [WaveDrom Tutorial](https://wavedrom.com/tutorial.html)
 - [WaveDrom 官方仓库 README](https://github.com/wavedrom/wavedrom)
-- [WaveDrom CLI](https://github.com/wavedrom/cli)

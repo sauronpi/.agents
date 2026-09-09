@@ -62,7 +62,7 @@ find "$HOME/.agents/skills" -type f -name SKILL.md
 | 工具                | 用途                              | 必需性 | 安装命令                                 |
 | ------------------- | --------------------------------- | ------ | ---------------------------------------- |
 | `markdownlint-cli2` | Markdown Skill 检查 Markdown 文件 | 可选   | `npm install -g markdownlint-cli2`       |
-| `wavedrom-cli`      | 渲染 WaveDrom 时序图              | 可选   | `npm install -g wavedrom-cli`            |
+| `wavedrom`          | 渲染 WaveDrom 时序图              | 可选   | `npm install -g wavedrom`                |
 | `maid`              | 预检 Mermaid 代码块               | 可选   | `npm install -g @probelabs/maid`         |
 | `mmdc`              | 渲染 Mermaid 图                   | 可选   | `npm install -g @mermaid-js/mermaid-cli` |
 
