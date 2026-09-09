@@ -5,15 +5,13 @@
 文档审查旨在确认当前文档能够完成既定用途并使审查收敛，不是尽可能寻找改进机会。
 
 审查 MUST 依据当前文档的目标、目标读者、适用范围和必要约束判断正确性与完整性，
-不得预设所有文档需要相同结构或深度。项目级规则 MAY 补充项目特有约束。
+不得预设所有文档需要相同结构；审查深度 SHOULD 与问题的影响、不确定性和文档用途相称。
 
 审查 MUST 限于：
 
 - 当前任务、验收条件、文档和修改；
 - 与当前审查对象直接相关的引用、上下文和依赖内容；
 - 作出关键判断所必需的验证结果。
-
-审查深度 SHOULD 与问题的影响、不确定性和文档用途相称。
 
 ## Finding 分级
 
@@ -46,8 +44,6 @@ MUST 降级为 Non-blocking 或 Remaining Uncertainty。
 
 - **事实与依据**：MUST 区分事实、推断和假设。仅核验实质影响文档用途的外部事实；
   来源 MUST 支持对应表述，并符合其适用时间和条件。
-- **完整性**：检查目标读者正确理解和使用文档所必需的信息是否齐全。
-- **结构**：仅检查其是否阻碍核心内容的正确理解或使用。
 - **冗余**：检查重复是否造成矛盾、多个有效版本、显著维护风险，或掩盖核心信息。
   不得以最短为目标牺牲准确性和可理解性。
 
@@ -58,27 +54,15 @@ Review MUST 先完成问题判断。只有当前任务已授权修改时，确�
 直接造成 Blocking 且无法局部修复时，才允许大范围重构。除非用户明确要求，否则
 Non-blocking Finding 只记录，MUST NOT 触发修改或继续审查。
 
-修复 Blocking 后 MUST 仅验证原 Blocking 是否解决，以及修复直接影响的内容是否引入
-新 Blocking 或破坏原始目标。
-
-复审后仍有 Blocking 时，若能在原范围内取得可验证进展，MUST 继续最小修复并定向复审；
-否则 MUST 停止修改，说明原因及继续所需的信息或重新规划条件。
+修复后 MUST 仅验证原 Blocking 是否解决，以及修复直接影响的内容是否引入新 Blocking
+或破坏原始目标。仍有 Blocking 时，若能在原范围内取得可验证进展，MUST 继续最小修复
+并定向复审；否则 MUST 停止修改，说明原因及继续所需的信息或重新规划条件。
 
 ## 输出与停止
 
 完成必要验证后，存在未解决的 Blocking Finding 时，Verdict MUST 为 `FAIL`；否则 MUST 为
 `PASS`。
 
-输出 MUST 包含 Verdict；仅在有对应内容时输出以下分组。完成输出后 MUST 结束审查。
-
-```text
-Verdict: PASS | FAIL
-[Blocking Findings:]
-- <finding>
-[Non-blocking Findings:]
-- <finding>
-[Verification:]
-- <performed check and result>
-[Remaining Uncertainty:]
-- <unverified matter, condition, and effect>
-```
+输出 MUST 包含 Verdict；仅在有对应内容时输出 Blocking Findings、Non-blocking Findings、
+Verification（实际检查及结果）和 Remaining Uncertainty（未验证事项、成立条件及影响）。
+完成输出后 MUST 结束审查。
