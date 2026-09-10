@@ -48,14 +48,12 @@ Remaining Uncertainty。`Minimal Fix` 不是 Blocking 成立的证据。最佳�
 
 ## 修复与复审
 
-Review MUST 先完成 Finding 判断。用户只要求审查时 MUST NOT 修改代码；任务明确包含修复
-但未指定 Finding 范围时，只有 Blocking Finding 默认允许触发恢复被违反约束所需的最小
-修改。用户明确要求修复全部或指定 Finding 时，可以修复相应的已确认问题。未经用户明确
-要求，Non-blocking Finding 仅可记录，MUST NOT 据此修改；也不得仅为该 Finding 扩大
-审查范围或增加审查轮次。
-修复 MUST 保持原任务范围。
+Review MUST 在修改 Finding 前确认其成立。用户只要求审查时 MUST NOT 修改代码；任务包含修复时，
+修复当前任务范围内已确认的 Finding。需要新授权或显著扩大任务范围的 Finding 不自动修改；
+若该 Finding 阻止当前任务完成，则请求用户决定，否则只报告。不得仅为 Non-blocking Finding
+扩大审查范围或增加审查轮次。
 
-修复 Blocking 后 MUST 仅复审原 Finding、修复直接引入的 Blocking、原始需求和必要验证。
+修复后 MUST 仅复审所有已修复 Finding、修改直接影响的路径、原始需求和必要验证。
 仍有 Blocking 时，若能在原范围内取得可验证进展，MUST 继续最小修复并定向复审；否则
 MUST 停止修改。
 
