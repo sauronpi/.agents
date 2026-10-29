@@ -17,3 +17,19 @@ description: '创建、修改、修复、审查或验证 Mermaid 图表及其源
 - 创建、修改、修复或明确验证图表时，优先在目标环境实际渲染；不可用时运行项目已有的验证命令或环境已有的 `mmdc`。仍无法渲染时使用目标环境已知支持的基础语法，并说明未验证项。不要仅为验证安装依赖。
 - 审查时仅在结论依赖渲染结果时实际渲染；要求兼容多个渲染器时分别验证。
 - 说明影响图义的假设。
+
+### 本地校验工具
+
+`maid` 只做静态预检，`mmdc` 才实际渲染，二者不能互相替代：
+
+| 工具 | 作用 | 调用 |
+| --- | --- | --- |
+| `maid` | 检查 Mermaid 源码和 Markdown 中的代码块能否解析 | `maid <文件或目录>` |
+| `mmdc` | 渲染为 SVG/PNG/PDF，可暴露布局、裁切和错位 | `mmdc -i input.mmd -o output.svg` |
+
+- 工具未安装时，取得用户许可后可临时调用：`npx @probelabs/maid <文件或目录>`、
+  `npx -p @mermaid-js/mermaid-cli mmdc -i input.mmd -o output.svg`。`mmdc` 的包名与
+  命令名不同，`npx` 必须带 `-p`。
+- `mmdc` 依赖无头 Chromium，首次安装会下载浏览器；Linux 或容器中可能需要
+  `--no-sandbox`，也可通过 Puppeteer 配置复用已安装的 Chrome。
+- 仅把 `maid` 原生支持图类型的结论视为有效，其余类型仍需目标渲染器验证。

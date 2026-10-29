@@ -69,5 +69,23 @@ find "$HOME/.agents/skills" -type f -name SKILL.md
 `-g` 表示全局安装；也可以安装为项目依赖并通过 `npx` 调用。具体命令、适用条件和验证
 流程以对应 Skill 为准。`npx` 可能下载并执行缺失的包，使用前应取得用户许可。
 
+`mmdc` 通过 Puppeteer 驱动无头 Chromium，安装 npm 包不保证浏览器二进制就绪。缺失时用
+`mmdc` 自带的 Puppeteer 安装，浏览器版本会自动与之对齐，无需查具体版本号：
+
+```shell
+node "$(npm root -g)/@mermaid-js/mermaid-cli/node_modules/puppeteer/lib/puppeteer/node/cli.js" browsers install chrome-headless-shell
+```
+
+该命令依赖全局安装的目录结构，在 bash、zsh 和 PowerShell 下可用，`cmd.exe` 不支持
+`$()`。`npx puppeteer browsers install chrome-headless-shell` 装的是最新 Puppeteer 锁定
+的构建，仅当它恰好与 `mmdc` 依赖的版本一致时有效，否则继续报缺失。
+
+`npm update -g` 不会跟随大版本，升级需显式指定；升级 `mmdc` 后浏览器也要重新对齐，
+重复上面的安装命令即可：
+
+```shell
+npm install -g @mermaid-js/mermaid-cli@latest
+```
+
 C/C++ 编译器、formatter、lint、构建和测试工具等项目依赖应由目标项目提供，不在此处
 规定具体实现或安装方式。
