@@ -22,6 +22,35 @@ Rule 的通用内容，也不应引用本仓库的 `AGENTS.md`。
 大多数 Agent 会自动发现 `$HOME/.agents/skills/` 下的用户级 Skills，无需在项目中显式
 引用。仅当 Agent 不支持自动发现时，才应在项目级规则入口中显式引用需要的 Skills。
 
+````markdown
+# AGENTS.md
+
+## 用户级 Rules
+
+开始任务前，先读取并遵循下列 Rules，按任务类型适用，不需要的条目可删除：
+
+- 创建、修改或重构代码：`~/.agents/rules/code-implementation.md`
+- 审查代码或文档：`~/.agents/rules/review.md`
+
+## 用户级 Skills
+
+遇到匹配的任务时，先读取对应的 `SKILL.md` 再按其指示工作，
+不需要的条目可删除：
+
+- 创建、修改或审阅 Markdown 文档：`~/.agents/skills/markdown/SKILL.md`
+- 创建、修改或审查 C 代码：`~/.agents/skills/c-code-style/SKILL.md`
+
+## 项目补充
+
+在此只写本项目特有的背景、构建和测试命令、约束与例外。
+````
+
+- 示例中的 `~` 表示当前用户主目录，与上文 `$HOME` 相同
+- 示例要求 Agent 能读取工作区之外的用户主目录文件，否则其中引用的 Rules 和 Skills
+  不会生效
+- Skills 一节仅在所用 Agent 不支持自动发现时才需要
+- 示例只列了两个 Skill，其余按需增补，路径格式相同
+
 ## 同步仓库
 
 首次安装时，将仓库克隆到用户主目录的 `.agents`。如果目录已经存在，使用原有方式
