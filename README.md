@@ -28,6 +28,7 @@ Agent 不会自动发现 `$HOME/.agents/rules/` 下的用户级 Rules，各项�
 ## 按需加载 Rules
 
 - 创建、修改或重构代码：`~/.agents/rules/code-implementation.md`
+- 委派子 Agent 或新建子会话：`~/.agents/rules/subagent-selection.md`
 
 ## 按需加载 Skills
 
