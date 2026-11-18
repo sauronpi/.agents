@@ -33,7 +33,7 @@ Agent 不会自动发现 `$HOME/.agents/rules/` 下的用户级 Rules，各项�
 
 - 委派子 Agent：`~/.agents/skills/subagent-selection/SKILL.md`
 - 审查代码或文档：`~/.agents/skills/review/SKILL.md`
-- 创建、修改或审阅 Markdown 文档：`~/.agents/skills/markdown/SKILL.md`
+- 检查 Markdown 文档格式与链接：`~/.agents/skills/markdown-check/SKILL.md`
 - 创建、修改或审查 C 代码：`~/.agents/skills/c-code-style/SKILL.md`
 
 ## 项目补充
@@ -84,12 +84,12 @@ find "$HOME/.agents/skills" -type f -name SKILL.md
 部分 Skills 可以使用基于 [Node.js](https://nodejs.org/) 的命令行工具进行自动检查或
 渲染。这些工具不是触发 Skill 的前置条件，需要对应工具验证时再按需安装：
 
-| 工具                | 用途                              | 必需性 | 安装命令                                 |
-| ------------------- | --------------------------------- | ------ | ---------------------------------------- |
-| `markdownlint-cli2` | Markdown Skill 检查 Markdown 文件 | 可选   | `npm install -g markdownlint-cli2`       |
-| `wavedrom`          | 渲染 WaveDrom 时序图              | 可选   | `npm install -g wavedrom`                |
-| `maid`              | 预检 Mermaid 代码块               | 可选   | `npm install -g @probelabs/maid`         |
-| `mmdc`              | 渲染 Mermaid 图                   | 可选   | `npm install -g @mermaid-js/mermaid-cli` |
+| 工具                | 用途                                | 必需性 | 安装命令                                 |
+| ------------------- | ----------------------------------- | ------ | ---------------------------------------- |
+| `markdownlint-cli2` | `markdown-check` 检查 Markdown 文件 | 可选   | `npm install -g markdownlint-cli2`       |
+| `wavedrom`          | 渲染 WaveDrom 时序图                | 可选   | `npm install -g wavedrom`                |
+| `maid`              | 预检 Mermaid 代码块                 | 可选   | `npm install -g @probelabs/maid`         |
+| `mmdc`              | 渲染 Mermaid 图                     | 可选   | `npm install -g @mermaid-js/mermaid-cli` |
 
 `-g` 表示全局安装；也可以安装为项目依赖并通过 `npx` 调用。具体命令、适用条件和验证
 流程以对应 Skill 为准。`npx` 可能下载并执行缺失的包，使用前应取得用户许可。

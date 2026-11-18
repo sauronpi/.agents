@@ -52,5 +52,5 @@
 ## Skills
 
 - 创建、修改或审查 Skill：[`skill-authoring`](skills/skill-authoring/SKILL.md)
-- 创建、修改或审阅 Markdown 文档：[`markdown`](skills/markdown/SKILL.md)
+- 检查 Markdown 文档格式与链接：[`markdown-check`](skills/markdown-check/SKILL.md)
 - 语法细节、较长示例和工具资料优先放入 Skill 的 `references/`，不要扩张本文件
