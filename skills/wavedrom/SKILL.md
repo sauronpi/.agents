@@ -1,6 +1,7 @@
 ---
 name: wavedrom
 description: '生成、修复和审阅 WaveDrom/WaveJSON 数字时序图。适用于 SPI、I2C、UART、GPIO、PWM、总线事务、bit-level 波形、采样边沿、位槽与字段标注，以及渲染失败、标签错位或时序语义核对。'
+disable-model-invocation: false
 ---
 
 # WaveDrom

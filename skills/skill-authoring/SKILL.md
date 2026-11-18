@@ -1,6 +1,7 @@
 ---
 name: skill-authoring
 description: '创建、修改和审查符合 Agent Skills 开放格式的 Skill。适用于编写或重构 SKILL.md、设计触发描述、组织 scripts/references/assets、验证格式与效果，或判断能力应放入 Skill、AGENTS.md、项目文档还是工具。'
+disable-model-invocation: false
 ---
 
 # Skill Authoring
@@ -98,6 +99,8 @@ description: '描述 Skill 做什么，以及什么时候使用'
 - `compatibility`：环境要求，存在时为 1 至 500 个字符。
 - `metadata`：字符串键到字符串值的映射。
 - `allowed-tools`：实验字段，各客户端支持不一致；跨客户端 Skill 默认不使用。
+
+客户端专属字段 `disable-model-invocation` 控制 Agent 能否按任务自主加载 Skill：需要按任务自动加载时为 `false`，只在用户明确要求时启用为 `true`。它为缺省值时也显式声明，让加载意图可核对；其他客户端可能忽略该字段，因此触发边界仍要靠 `description` 和正文表达。
 
 客户端专属元数据不得冒充通用字段；官方 [Agent Skills specification](https://github.com/agentskills/agentskills/blob/main/docs/specification.mdx) 是格式解释的最终依据，但 Skill 的日常执行不应依赖联网读取它。
 

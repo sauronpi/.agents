@@ -1,6 +1,7 @@
 ---
 name: modern-avalonia
 description: '实现或审查 Avalonia UI 的数据绑定、样式或控件行为时，选择适用于项目版本和视图设置的框架机制。适用于 XAML 和代码中的 UI 实现，不用于纯 C# 语法或通用 .NET API 选择。'
+disable-model-invocation: false
 ---
 
 # 选择 Avalonia UI 实现

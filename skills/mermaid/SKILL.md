@@ -1,6 +1,7 @@
 ---
 name: mermaid
 description: '创建、修改、修复、审查或验证 Mermaid 图表及其源码，并按用途选择图类型。适用于流程、交互、状态、类与实体关系、甘特计划和渲染排错；不适用于逐周期数字波形、采样边沿或位槽图，后者使用 WaveDrom。'
+disable-model-invocation: false
 ---
 
 # Mermaid

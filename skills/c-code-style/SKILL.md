@@ -1,6 +1,7 @@
 ---
 name: c-code-style
 description: '创建、修改、重构或审查通用 C 与嵌入式 C 的 .c/.h 代码及代码风格。适用于 C 实现、C API、驱动、命名约定和 C/C++ 共享头文件；不适用于独立 C++ 或 Objective-C。'
+disable-model-invocation: false
 ---
 
 # C Code Style

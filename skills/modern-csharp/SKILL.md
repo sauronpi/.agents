@@ -1,6 +1,7 @@
 ---
 name: modern-csharp
 description: '编写或审查 C# 代码时，为目标项目选择可用的 C# 语法或 .NET API；适用于比较新旧写法和处理多目标框架兼容性。不负责 UI 框架的绑定、样式或控件行为。'
+disable-model-invocation: false
 ---
 
 # 选择 C# 语法与 .NET API
