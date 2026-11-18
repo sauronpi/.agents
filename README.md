@@ -16,8 +16,9 @@
 ## 项目级 Rules 和 Skills 接入
 
 各项目应根据实际需求，在项目级规则入口中显式引用 `$HOME/.agents/rules/` 下需要的
-Rules。项目级规则只需补充该项目特有的背景、约束、命令和例外，不应复制或改写用户级
-Rule 的通用内容，也不应引用本仓库的 `AGENTS.md`。
+Rules。多个角色都适用的 Rule 优先从它们共同读取的入口引用一次。项目级规则只需补充
+该项目特有的背景、约束、命令和例外，不应复制或改写用户级 Rule 的通用内容，也不应引用
+本仓库的 `AGENTS.md`。
 
 大多数 Agent 会自动发现 `$HOME/.agents/skills/` 下的用户级 Skills，无需在项目中显式
 引用。仅当 Agent 不支持自动发现时，才应在项目级规则入口中显式引用需要的 Skills。
@@ -27,8 +28,9 @@ Rule 的通用内容，也不应引用本仓库的 `AGENTS.md`。
 
 ## 用户级 Rules
 
-开始任务前，先读取并遵循下列 Rules，按任务类型适用，不需要的条目可删除：
+开始任务前，先读取所需的 Rules 并按各自范围遵循，不需要的条目可删除：
 
+- 委派子 Agent：`~/.agents/rules/subagent-selection.md`
 - 创建、修改或重构代码：`~/.agents/rules/code-implementation.md`
 - 审查代码或文档：`~/.agents/rules/review.md`
 
