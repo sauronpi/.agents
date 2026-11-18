@@ -27,12 +27,12 @@ Agent 不会自动发现 `$HOME/.agents/rules/` 下的用户级 Rules，各项�
 
 ## 按需加载 Rules
 
-- 委派子 Agent：`~/.agents/rules/subagent-selection.md`
 - 创建、修改或重构代码：`~/.agents/rules/code-implementation.md`
 - 审查代码或文档：`~/.agents/rules/review.md`
 
 ## 按需加载 Skills
 
+- 委派子 Agent：`~/.agents/skills/subagent-selection/SKILL.md`
 - 创建、修改或审阅 Markdown 文档：`~/.agents/skills/markdown/SKILL.md`
 - 创建、修改或审查 C 代码：`~/.agents/skills/c-code-style/SKILL.md`
 
@@ -45,7 +45,7 @@ Agent 不会自动发现 `$HOME/.agents/rules/` 下的用户级 Rules，各项�
 - 示例要求 Agent 能读取工作区之外的用户主目录文件，否则其中引用的 Rules 和 Skills
   不会生效
 - Skills 一节仅在所用 Agent 不支持自动发现时才需要
-- 示例只列了两个 Skill，其余按需增补，路径格式相同
+- 示例只列了部分 Skill，其余按需增补，路径格式相同
 
 ## 同步仓库
 
