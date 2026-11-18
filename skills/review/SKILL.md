@@ -1,6 +1,7 @@
 ---
 name: review
 description: '对代码变更、diff、指定代码文件或文档进行正式代码审查或文档审查，判定 Blocking / Non-blocking 问题、执行最小修复复审并给出 PASS/FAIL 结论时使用。可与语言或文档格式 Skill 配合使用；不用于对抗式审查（adversarial-review）。'
+disable-model-invocation: false
 ---
 
 # 审查

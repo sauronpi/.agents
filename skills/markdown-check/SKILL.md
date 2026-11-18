@@ -1,6 +1,7 @@
 ---
 name: markdown-check
 description: '创建、修改或检查 Markdown 文档时验证格式与链接。适用于 README、设计文档、技术说明、开发记录和其他 Markdown 文件；不适用于仅处理代码围栏内的 Mermaid 或 WaveDrom 内容。'
+disable-model-invocation: false
 ---
 
 # Markdown 检查

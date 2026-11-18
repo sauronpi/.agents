@@ -1,6 +1,7 @@
 ---
 name: subagent-selection
 description: '委派任务给子 Agent、新建子会话或为子任务选择模型时使用。规范可显式选模检查、按提供方分组列出并推荐模型、显式传入模型 ID、上下文传递及结果交接。'
+disable-model-invocation: false
 ---
 
 # 子 Agent 委派与模型选择
