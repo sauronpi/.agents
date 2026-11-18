@@ -28,11 +28,11 @@ Agent 不会自动发现 `$HOME/.agents/rules/` 下的用户级 Rules，各项�
 ## 按需加载 Rules
 
 - 创建、修改或重构代码：`~/.agents/rules/code-implementation.md`
-- 审查代码或文档：`~/.agents/rules/review.md`
 
 ## 按需加载 Skills
 
 - 委派子 Agent：`~/.agents/skills/subagent-selection/SKILL.md`
+- 审查代码或文档：`~/.agents/skills/review/SKILL.md`
 - 创建、修改或审阅 Markdown 文档：`~/.agents/skills/markdown/SKILL.md`
 - 创建、修改或审查 C 代码：`~/.agents/skills/c-code-style/SKILL.md`
 
