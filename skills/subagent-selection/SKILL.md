@@ -1,6 +1,6 @@
 ---
 name: subagent-selection
-description: '委派任务给子 Agent、新建子会话或为子任务选择模型时使用。规范可显式选模检查、按提供方分组列出并推荐模型、显式传入模型 ID、上下文传递及结果交接。'
+description: '委派任务给子 Agent 或为子任务选择模型时使用。新建子 Agent 须显式选模并经用户确认，不得直接使用工具默认模型。'
 disable-model-invocation: false
 ---
 
@@ -9,7 +9,7 @@ disable-model-invocation: false
 ## 委派判断与前置检查
 
 1. 自行判断是否需要委派子 Agent；可直接高效完成的简单任务不强行委派。
-2. 仅在新建子 Agent 会话时执行模型选择流程；续用同一子会话无需重新选模。
+2. 仅在新建子 Agent 时执行模型选择流程；续用同一子 Agent 无需重新选模。
 3. 新建子 Agent 前，先检查当前工具是否支持显式指定模型。若无法显式指定模型，告知用户并停止启动。
 
 ## 模型列出与确认
