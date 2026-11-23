@@ -1,6 +1,6 @@
 ---
 name: markdown-check
-description: '创建、修改或检查 Markdown 文档时验证格式与链接。适用于 README、设计文档、技术说明、开发记录和其他 Markdown 文件；不适用于仅处理代码围栏内的 Mermaid 或 WaveDrom 内容。'
+description: '检查 Markdown 文档的格式、相对链接和资源引用。编辑任务仅在本轮文档编辑全部完成后、交付前使用；用户明确要求只检查现有文档时可直接使用。不适用于仅处理代码围栏内的 Mermaid 或 WaveDrom 内容。'
 disable-model-invocation: false
 ---
 
@@ -8,7 +8,7 @@ disable-model-invocation: false
 
 ## 工作流程
 
-1. 确定目标 Markdown 文件范围及任务类型（创建、修改或仅检查）。仅要求检查时默认只读；任务包含创建或修改时按范围执行。
+1. 编辑任务在本轮内容全部写入后，以此次新建或修改的 Markdown 文件为检查范围；用户明确要求只检查现有文档时，按请求范围只读检查。
 2. 查看适用的项目规则、Markdown lint 配置（如 `.markdownlint-cli2.jsonc`、`.markdownlint.jsonc`）及已有验证脚本；不把某个项目的约定当作通用规则。
 3. 执行受影响内容的格式检查：
    - 优先运行项目已有的验证命令；否则使用环境中已有的 `markdownlint-cli2` 或 `markdownlint` 检查受影响文件。
