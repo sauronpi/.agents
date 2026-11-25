@@ -36,6 +36,7 @@ Agent 不会自动发现 `$HOME/.agents/rules/` 下的用户级 Rules，各项�
 - 审查代码或文档：`~/.agents/skills/review/SKILL.md`
 - 检查 Markdown 文档格式与链接：`~/.agents/skills/markdown-check/SKILL.md`
 - 创建、修改或审查 C 代码：`~/.agents/skills/c-code-style/SKILL.md`
+- 操作桌面软件或界面：`~/.agents/skills/gui-operation/SKILL.md`
 
 ## 项目补充
 
